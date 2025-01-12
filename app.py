@@ -163,7 +163,7 @@ with st.container():
     render_media_card(
         title="ASHA",
         description="",
-        video_url="https://youtu.be/your_video_id",
+        video_url="https://youtu.be/U-gkH3PucOQ",
         skills=['Python','AzureOpenAI','ASR','Whisper','Bhashini','Custom RAG','NLP'],
         # github_url="https://github.com/username/repo"
         )
