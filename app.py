@@ -30,7 +30,7 @@ st.write('''
 
 col1, col2, col3 = st.columns([0.55, 1, 1],gap="large")
 with col2:
-  image = Image.open('.assets\me2.png')
+  image = Image.open(r'.assets/me2.png')
   st.image(image, width=150)
 
 col1, col2, col3 = st.columns([1, 2.5, 1],gap="large")
