@@ -1,7 +1,7 @@
 import streamlit as st
 st.set_page_config(page_title="Roushan Kumar, Data Scientist", page_icon=":robot:",layout="wide")
 from PIL import Image
-from my_utils.media_cart import render_media_card, centered_display
+from my_utils.media_cart import render_media_card, centered_display,render_skill_card
 from descriptions import *
 
 st.markdown('''<style>body{
@@ -96,14 +96,29 @@ def txt3(a, b):
   with col2:
     st.markdown(b)
   
-def txt4(a, b, c):
-  col1, col2, col3 = st.columns([1.5,2,2])
+def txt4(project_name, project_title, project_desc,skills,github_url = None):
+  col1, col2, col3 = st.columns([1,3,2])
   with col1:
-    st.markdown(f'`{a}`')
+    st.markdown(f'###### {project_name}')
   with col2:
-    st.markdown(b)
+    # st.markdown(project_title)
+    with st.expander(f"{project_title}"):
+      st.write(
+              project_desc
+          )
   with col3:
-    st.markdown(c)
+    render_skill_card(
+        skills=skills,
+    )
+
+def achievements(title, desc, link):
+  col1, col2,col3 = st.columns([2,4,1])
+  with col1:
+    st.markdown(title)
+  with col2:
+    st.markdown(desc)
+  with col3:
+    st.markdown(link)
 
 #####################
 centered_display("Professional Projects")
@@ -139,7 +154,7 @@ with st.container():
     
   with col3:
     render_media_card(
-        title="Auto form filling assistant",
+        title="Auto form filling assistant(POC)",
         description="",
         video_url="https://youtu.be/knANew36qdo",
         skills=['Python', 'NLP','Whisper','Bhashini','AzureOpenAI','Django','Docker','streamlit'],
@@ -153,15 +168,20 @@ with st.container():
   col1,col2,col3 = st.columns(3,gap="small")
   with col1:
     render_media_card(
-        title="GenBI",
+        title="GenBI(POC)",
         description="",
         video_url="https://youtu.be/your_video_id",
+        skills=['Python', 'NLP','SQL','AzureOpenAI','AI Agents','Streamlit','Chroma vectorstore','RAG','Bhashini'],
         # github_url="https://github.com/username/repo", # Optional
     )
+    with st.expander("More info"):
+      st.write(
+              genbi_description
+          )
     
   with col2:
     render_media_card(
-        title="ASHA",
+        title="ASHA(POC)",
         description="",
         video_url="https://youtu.be/U-gkH3PucOQ",
         skills=['Python','AzureOpenAI','ASR','Whisper','Bhashini','Custom RAG','NLP'],
@@ -176,18 +196,25 @@ st.divider()
 #####################
 centered_display("Independent Projects")
 st.divider()
-txt4('EnhancedOCR', 'OCR using YOLOV7 and Tesseract', '')
-# txt4('AutoWeka', 'An automated data mining software based on Weka', '')
-# txt4('ACPred', 'A computational tool for the prediction and analysis of anticancer peptides','')
-# txt4('BioCurator', 'A web server for curating ChEMBL bioactivity data', '')
-# txt4('CryoProtect', 'A web server for classifying antifreeze proteins from non-antifreeze proteins','')
+txt4(project_name='Chakshu', 
+     project_title='Intelligent OCR tool', 
+     project_desc=chakshu_desc,
+     skills=['Python', 'CV','yolo','Tesseract','Deep Learning','LLMs']
+     )
 st.divider()
-
 #####################
 centered_display("Achievements",left=1.4)
 
 
-# st.divider()
+st.divider()
+achievements(title='Client Extraordinaire (2024-April)',
+              desc='Awarded for exceptional and innovative GenAI solutions for clients',
+              link='[Certificate](https://drive.google.com/file/d/1jRcmdfn-QXyK2-fUKpsckJA50kUG5iMJ/view?usp=sharing)'
+              ) 
+achievements(title='Client Extraordinaire (2024-December)',
+              desc='Awarded for deploying WhatsApp grievance auto-allocation, JalVigil, and for being a client extraordinaire',
+              link='[Certificate](https://drive.google.com/file/d/1NgU1xw17hKG17JPpwl9IKFMiTpO2qRNb/view?usp=sharing)'
+              ) 
 # txt('Programming', '`Python`, `R`, `Linux`')
 # txt2('Data processing/wrangling', '`SQL`, `pandas`, `numpy`')
 # # txt3('Data visualization', '`matplotlib`, `seaborn`, `plotly`, `altair`, `ggplot2`')
